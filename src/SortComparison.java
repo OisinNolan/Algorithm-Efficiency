@@ -19,8 +19,18 @@ import java.util.Scanner;
      * @return array sorted in ascending order.
      *
      */
-    static double [] insertionSort (double a[]){
-        
+    static double[] insertionSort (double[] a){
+    		double tmp;
+    		for(int i=1; i<a.length; i++) {
+    			for(int j=i; j>0; j--) {
+    				if((a[j-1]) > a[j]) {
+    					tmp = a[j];
+    					a[j] = a[j-1];
+    					a[j-1] = tmp;
+    				}
+    			}
+    		}
+    		return a;
     }//end insertionsort
 
     /**
@@ -101,6 +111,7 @@ import java.util.Scanner;
     		}
     		input.close();
     		printArray(list10);
+    		printArray(insertionSort(list10));
         //todo: do experiments as per assignment instructions
     }
     
