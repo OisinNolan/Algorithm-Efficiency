@@ -1,3 +1,7 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
 // -------------------------------------------------------------------------
 
 /**
@@ -9,7 +13,6 @@
  */
 
  class SortComparison {
-
     /**
      * Sorts an array of doubles using InsertionSort.
      * This method is static, thus it can be called as SortComparison.sort(a)
@@ -18,7 +21,7 @@
      *
      */
     static double [] insertionSort (double a[]){
-        //todo: implement the sort
+        
     }//end insertionsort
 
     /**
@@ -88,9 +91,22 @@
    
 
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws FileNotFoundException {
+    		FileReader fin = new FileReader("numbers10.txt");
+    		Scanner input = new Scanner(fin);
+    		double[] list10 = new double[10];
+    		for(int i=0; input.hasNextDouble(); i++) {
+    			list10[i] = input.nextDouble();
+    		}
+    		printArray(list10);
         //todo: do experiments as per assignment instructions
+    }
+    
+    public static void printArray(double a[]) {
+    		for(int i=0; i<a.length; i++) {
+    			System.out.print(a[i] + ", ");
+    		}
+    		System.out.println();
     }
 
  }//end class
