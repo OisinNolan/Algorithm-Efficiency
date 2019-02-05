@@ -1,5 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Scanner;
 
 // -------------------------------------------------------------------------
@@ -92,12 +91,15 @@ import java.util.Scanner;
 
 
     public static void main(String[] args) throws FileNotFoundException {
-    		FileReader fin = new FileReader("numbers10.txt");
-    		Scanner input = new Scanner(fin);
+    		// Input numbers from file and store them in an array
+    		File file = new File("numbers10.txt");
+    		BufferedReader br = new BufferedReader(new FileReader(file));
+    		Scanner input = new Scanner(br);
     		double[] list10 = new double[10];
     		for(int i=0; input.hasNextDouble(); i++) {
     			list10[i] = input.nextDouble();
     		}
+    		input.close();
     		printArray(list10);
         //todo: do experiments as per assignment instructions
     }
