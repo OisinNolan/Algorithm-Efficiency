@@ -107,9 +107,14 @@ import java.util.Scanner;
      */
 
     static double[] mergeSortIterative (double a[]) {
-
-		 //todo: implement the sort
-	
+    		int N = a.length;
+    		double[] aux = new double[N];
+    		for(int size = 1; size<N; size += size) {
+    			for(int lo=0; lo < N-size; lo += 2*size) {
+    				merge(a, aux, lo, lo+size-1, Math.min(lo+size+size-1, N-1));
+    			}
+    		}
+    		return a;
     }//end mergesortIterative
     
     
@@ -122,34 +127,33 @@ import java.util.Scanner;
      * @return after the method returns, the array must be in ascending sorted order.
      */
     static double[] mergeSortRecursive (double a[]) {
-    	
-
-    	//todo: implement the sort
-	
+    		double[] aux = new double[a.length];
+    		sort(a, aux, 0, a.length - 1);
+    		return a;
    }//end mergeSortRecursive
+    
+    static void sort(double[] a, double[] aux, int lo, int hi) {
+    		if(hi <= lo) return;
+		int mid = lo + (hi-lo) / 2;
+		sort(a, aux, lo, mid);
+		sort(a, aux, mid+1, hi);
+		merge(a, aux, lo, mid, hi);
+    }
     	
-    static double[] merge(double a[], double b[]) {
-    		int i=0;
-    		int j=0;
-    		int k=0;
-    		double[] c = new double[a.length + b.length];
-    		while(i<a.length && j<b.length) {
-    			if(a[i] < b[j]) {
-    				c[k] = a[i++];
-    			} else {
-    				c[k] = b[j++];
-    			}
-    			k++;
+    static void merge(double a[], double aux[], int lo, int mid, int hi) {
+    	
+    		for(int k=lo; k<= hi; k++) {
+    			aux[k] = a[k];
     		}
-    		while(k<c.length) {
-    			if(i < a.length) {
-    				c[k++] = a[i++];
-    			}
-    			if(j < b.length) {
-    				c[k++] = b[j++];
-    			}
+    	
+    		int i = lo;
+    		int j = mid+1;
+    		for(int k=lo; k <= hi; k++) {
+    			if (i>mid) a[k] = aux[j++];
+    			else if (j > hi) a[k] = aux[i++];
+    			else if (aux[j] < aux[i]) a[k] = aux[j++];
+    			else a[k] = aux[i++];
     		}
-    		return c;
     }
     
     
@@ -161,9 +165,22 @@ import java.util.Scanner;
      *
      */
     static double [] selectionSort (double a[]){
-
-         //todo: implement the sort
-
+    		int min=0;
+    		double smallest;
+    		int smallestIndex = 0;
+    		while(min < a.length) {
+    			smallest = a[min];
+    			smallestIndex = min;
+    			for(int j=min+1; j<a.length; j++) {
+    				if(a[j] < smallest) {
+    					smallest = a[j];
+    					smallestIndex = j;
+    				}
+    			}
+    			swap(a, min, smallestIndex);
+    			min++;
+    		}
+    		return a;
     }//end selectionsort
 
    
@@ -179,6 +196,7 @@ import java.util.Scanner;
     			list10[i] = input.nextDouble();
     		}
     		input.close();
+    		printArray(selectionSort(list10));
         //todo: do experiments as per assignment instructions
     }
     
