@@ -128,6 +128,30 @@ import java.util.Scanner;
 	
    }//end mergeSortRecursive
     	
+    static double[] merge(double a[], double b[]) {
+    		int i=0;
+    		int j=0;
+    		int k=0;
+    		double[] c = new double[a.length + b.length];
+    		while(i<a.length && j<b.length) {
+    			if(a[i] < b[j]) {
+    				c[k] = a[i++];
+    			} else {
+    				c[k] = b[j++];
+    			}
+    			k++;
+    		}
+    		while(k<c.length) {
+    			if(i < a.length) {
+    				c[k++] = a[i++];
+    			}
+    			if(j < b.length) {
+    				c[k++] = b[j++];
+    			}
+    		}
+    		return c;
+    }
+    
     
     /**
      * Sorts an array of doubles using Selection Sort.
@@ -155,8 +179,6 @@ import java.util.Scanner;
     			list10[i] = input.nextDouble();
     		}
     		input.close();
-    		printArray(list10);
-    		printArray(quickSort(list10));
         //todo: do experiments as per assignment instructions
     }
     
