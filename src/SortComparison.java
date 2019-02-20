@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 // -------------------------------------------------------------------------
 
+
 /**
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
@@ -187,17 +188,21 @@ import java.util.Scanner;
 
 
     public static void main(String[] args) throws FileNotFoundException {
-    		// Input numbers from file and store them in an array
-    		File file = new File("numbers10.txt");
-    		BufferedReader br = new BufferedReader(new FileReader(file));
-    		Scanner input = new Scanner(br);
-    		double[] list10 = new double[10];
-    		for(int i=0; input.hasNextDouble(); i++) {
-    			list10[i] = input.nextDouble();
-    		}
-    		input.close();
-    		printArray(selectionSort(list10));
-        //todo: do experiments as per assignment instructions
+    		printArray(importArray("numbersSorted1000.txt", 1000));
+    		printArray(quickSort(importArray("numbersSorted1000.txt", 1000)));
+    }
+    
+    public static double[] importArray(String fileName, int arraySize) throws FileNotFoundException {
+    	// Input numbers from file and store them in an array
+		File file = new File(fileName);
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		Scanner input = new Scanner(br);
+		double[] list = new double[arraySize];
+		for(int i=0; input.hasNextDouble(); i++) {
+			list[i] = input.nextDouble();
+		}
+		input.close();
+		return list;
     }
     
     public static void printArray(double a[]) {
