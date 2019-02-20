@@ -16,7 +16,7 @@ import org.junit.runners.JUnit4;
 /**
  *  Test class for SortComparison.java
  *
- *  @author
+ *  @author Oisín Nolan
  *  @version HT 2019
  */
 
@@ -32,6 +32,54 @@ import org.junit.runners.JUnit4;
 1000 nearly ordered	0.004		0.001		0.000				0.000				0.000
 1000 reverse order	0.010		0.007		0.000				0.000				0.006
 1000 sorted			0.000		0.000		0.000				0.000				0.001
+
+a. Which of the sorting algorithms does the order of input have an impact on? Why?
+Insertion sort and Quicksort
+Insertion sort loops through every element between i and 0, each time comparing the current value until it
+finds one which is lower. In the case that the list is in order, it will simply loop through once,
+in linear time. If the list is in reverse order, it will have to compare every value at i with i-1 other elements
+before finding the right location, yielding O(n^2) time complexity.
+
+With quicksort it's due to the pivot chosen. If an array is ordered and the pivot is chosen at the beginning or end, then 
+the partition will end up very unbalanced and thus cause a need for more steps.
+
+b. Which algorithm has the biggest difference between the best and worst performance, based
+on the type of input, for the input of size 1000? Why?
+Insertion sort.
+Insertion sort only starts comparing when an element is out of order. It follows that if the array is sorted or nearly
+sorted, the algorithm will have to perform very few comparisons, whereas a reversed list would require the 
+maximum possible amount of comparisons. It is for this reason that there is such a big difference,
+the algorithm can sort at best O(n) and worst O(n^2) depending on input.
+
+c. Which algorithm has the best/worst scalability, i.e., the difference in performance time
+based on the input size? Please consider only input files with random order for this answer.
+
+Best scalability is quicksort or mergesort. They both sort the list using divide and
+conquer technique, and therefore generally sort an array in O(n log(n)) time. This
+lends itself to be scaled as log functions begin to plateau at a point.
+
+Worst scalability is insertion sort. For a typical array this algorithm sorts in O(n^2) time,
+which scales terribly as it drastically increases in time as the input size (n) increases.
+
+d. Did you observe any difference between iterative and recursive implementations of merge
+sort?
+
+Iterative performs better for the random list of 1000 doubles.
+Recursive performs better for the list containing duplicates.
+Recursive performs better for list containing 10 random.
+
+e. Which algorithm is the fastest for each of the 7 input files? 
+
+10 random - quick, merge recursive
+100 random - merge iterative, merge recursive
+1000 random	- merge iterative, merge recursive
+1000 few unique - insertion
+1000 nearly ordered - merge iterative, merge recursive, selection sort
+1000 reverse order - merge iterative, merge recursive
+1000 sorted - All algorithms except for selection sort.
+
+
+
  * 
  * 
  * 

@@ -8,7 +8,7 @@ import java.util.Scanner;
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
  *
- *  @author
+ *  @author Oisín Nolan
  *  @version HT 2019
  */
 
@@ -188,28 +188,28 @@ import java.util.Scanner;
 
 
     public static void main(String[] args) throws FileNotFoundException {
-    		printArray(importArray("numbersSorted1000.txt", 1000));
-    		printArray(quickSort(importArray("numbersSorted1000.txt", 1000)));
+    	//	printArray(importArray("numbersSorted1000.txt", 1000));
+    	//	printArray(quickSort(importArray("numbersSorted1000.txt", 1000)));
     }
     
-    public static double[] importArray(String fileName, int arraySize) throws FileNotFoundException {
+//  public static double[] importArray(String fileName, int arraySize) throws FileNotFoundException {
     	// Input numbers from file and store them in an array
-		File file = new File(fileName);
-		BufferedReader br = new BufferedReader(new FileReader(file));
-		Scanner input = new Scanner(br);
-		double[] list = new double[arraySize];
-		for(int i=0; input.hasNextDouble(); i++) {
-			list[i] = input.nextDouble();
-		}
-		input.close();
-		return list;
-    }
+	//	File file = new File(fileName);
+	//	BufferedReader br = new BufferedReader(new FileReader(file));
+	//	Scanner input = new Scanner(br);
+	//	double[] list = new double[arraySize];
+	//	for(int i=0; input.hasNextDouble(); i++) {
+	//		list[i] = input.nextDouble();
+	//	}
+	//	input.close();
+	//	return list;
+//  }
     
-    public static void printArray(double a[]) {
-    		for(int i=0; i<a.length; i++) {
-    			System.out.print(a[i] + ", ");
-    		}
-    		System.out.println();
-    }
+//  public static void printArray(double a[]) {
+    	//	for(int i=0; i<a.length; i++) {
+    	//		System.out.print(a[i] + ", ");
+    	//	}
+    //	System.out.println();
+//   }
 
  }//end class
